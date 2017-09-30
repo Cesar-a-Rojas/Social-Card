@@ -23,6 +23,6 @@ class APIController extends Controller
 
     function index()
     {
-        return "This is index";
+        return "Hello ".Auth::guard('api')->user()->name;
     }
 }
