@@ -11,14 +11,14 @@ class APIController extends Controller
 
     function authenticate()
     {
-        return request('email')." ".request('password');
+        return request('email');
     }
 
     function register()
     {
         User::create([
             'name' => request('name'),
-            'email' => request('name'),
+            'email' => request('email'),
             'password' => bcrypt(request('password')),
             'api_token' => str_random(60)
         ]);
