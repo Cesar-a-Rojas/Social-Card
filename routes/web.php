@@ -22,9 +22,14 @@ Route::post('api/register', 'APIController@register');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
     Route::post('/index', 'APIController@index');
+
     Route::post('/user/socialMedia', 'APIController@userSocialMedia');
     Route::post('/user/categories', 'APIController@userCategories');
     Route::post('/user/cards', 'APIController@userCards');
+
+    Route::post('user/socialMedia/add', 'APIController@addSocialMedia');
+    Route::post('user/categories/add', 'APIController@addCategory');
+    Route::post('user/cards/add', 'APIController@addCard');
 
 });
 

@@ -52,4 +52,34 @@ class APIController extends Controller
     {
         return Auth::guard('api')->user()->cards;
     }
+
+    function addSocialMedia()
+    {
+        Auth::guard('api')->user()->socialMedia()->create([
+            'name' => request('name'),
+            'username' => request('username'),
+            'category_id' => request('category')
+        ]);
+        return "ok";
+    }
+
+    function addCategory()
+    {
+        Auth::guard('api')->user()->categories()->create([
+            'name' => request('name')
+        ]);
+
+        return "ok";
+    }
+
+    function addCard()
+    {
+        $category = Category::find(request('number'));
+        Auth::guard('api')->user()->cards()->create([
+            'owner_id' => $category->user->id,
+            'category_id' => $category->id
+        ]);
+
+        return "ok";
+    }
 }
