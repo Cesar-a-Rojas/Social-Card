@@ -22,6 +22,10 @@ Route::post('api/register', 'APIController@register');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
     Route::post('/index', 'APIController@index');
+    Route::post('/user/socialMedia', 'APIController@userSocialMedia');
+    Route::post('/user/categories', 'APIController@userCategories');
+    Route::post('/user/cards', 'APIController@userCards');
+
 });
 
 Route::post('user/socialMedia/add', 'UserController@addSocialMedia')->name('addSocialMedia');

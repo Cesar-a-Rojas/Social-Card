@@ -35,6 +35,21 @@ class APIController extends Controller
 
     function index()
     {
-        return "Hello ".Auth::guard('api')->user()->name;
+        return Auth::guard('api')->user()->with(['socialMedia', 'categories', 'cards'])->get();
+    }
+
+    function userCategories()
+    {
+        return Auth::guard('api')->user()->categories()->with('socialMedia')->get();
+    }
+
+    function userSocialMedia()
+    {
+        return Auth::guard('api')->user()->socialMedia;
+    }
+
+    function userCards()
+    {
+        return Auth::guard('api')->user()->cards;
     }
 }
