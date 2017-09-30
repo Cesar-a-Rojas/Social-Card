@@ -21,6 +21,24 @@ class APIController extends Controller
         }
     }
 
+    function register()
+    {
+        $this->validate(request(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'api_token' => str_random(60)
+        ]);
+
+        return "ok";
+    }
+
     function index()
     {
         return "Hello ".Auth::guard('api')->user()->name;

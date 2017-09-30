@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::post('api/authenticate', 'APIController@authenticate');
+Route::post('api/register', 'APIController@register');
 
 Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
     Route::post('/index', 'APIController@index');
