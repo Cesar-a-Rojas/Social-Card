@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('api/authenticate', 'APIController@authenticate');
+
+Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
+    Route::post('/index', 'APIController@index');
+});
+
 Route::post('user/socialMedia/add', 'UserController@addSocialMedia')->name('addSocialMedia');
 Route::post('user/categories/add', 'UserController@addCategory')->name('addCategory');
 Route::post('user/cards/add', 'UserController@addCard')->name('addCard');
