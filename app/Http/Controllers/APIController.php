@@ -11,14 +11,7 @@ class APIController extends Controller
 
     function authenticate()
     {
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')]))
-        {
-            return User::where('email', request('email'))->first()->api_token;
-        }
-        else
-        {
-            return "Authentication Failed";
-        }
+        return request('email')." ".request('password');
     }
 
     function register()
