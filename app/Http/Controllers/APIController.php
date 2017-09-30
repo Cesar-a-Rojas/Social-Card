@@ -30,9 +30,9 @@ class APIController extends Controller
         ]);
 
         User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => request('name'),
+            'email' => request('name'),
+            'password' => bcrypt(request('password')),
             'api_token' => str_random(60)
         ]);
 
