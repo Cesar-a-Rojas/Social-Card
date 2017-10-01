@@ -14,6 +14,6 @@ class Card extends Model
 
     function socialMedia()
     {
-        return Category::find($this->category_id)->socialMedia;
+        return $this->belongsTo(Category::class, 'category_id')->socialMedia;
     }
 }
