@@ -59,7 +59,7 @@
             @foreach(auth()->user()->cards as $card)
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h1>{{ $card->owner()->name}}</h1>
+                        <h1>{{ $card->owner->name}}</h1>
                         @foreach($card->socialMedia() as $media)
                         <h3>{{ $media->name }}: {{ $media->username }}</h3>
                         @endforeach
