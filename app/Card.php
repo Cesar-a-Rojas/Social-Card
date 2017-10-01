@@ -9,7 +9,7 @@ class Card extends Model
 
     function owner()
     {
-        return User::find($this->owner_id);
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     function socialMedia()
