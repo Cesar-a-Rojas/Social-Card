@@ -45,7 +45,7 @@ class APIController extends Controller
 
     function userSocialMedia()
     {
-        return Auth::guard('api')->user();
+        return Auth::guard('api')->user()->socialMedia()->get();
     }
 
     function userCards()
