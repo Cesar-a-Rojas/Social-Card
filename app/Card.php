@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
@@ -14,6 +15,11 @@ class Card extends Model
 
     function socialMedia()
     {
-        return $this->belongsTo(Category::class, 'category_id')->socialMedia;
+        return Category::find($this->category_id)->socialMedia;
+    }
+
+    function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
