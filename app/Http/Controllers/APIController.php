@@ -74,6 +74,7 @@ class APIController extends Controller
 
     function addCard()
     {
+        $category = Category::find(request('number'));
 
 
         return "ok";
