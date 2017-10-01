@@ -74,11 +74,7 @@ class APIController extends Controller
 
     function addCard()
     {
-        $category = Category::find(request('number'));
-        Auth::guard('api')->user()->cards()->create([
-            'owner_id' => $category->user->id,
-            'category_id' => $category->id
-        ]);
+
 
         return "ok";
     }
