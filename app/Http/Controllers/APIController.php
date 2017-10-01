@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Category;
+use App\Card;
 
 class APIController extends Controller
 {
@@ -51,7 +52,7 @@ class APIController extends Controller
 
     function userCards()
     {
-        return Auth::guard('api')->user()->cards;
+        return Auth::guard('api')->user()->cards()->with('owner')->get();
     }
 
     function addSocialMedia()
